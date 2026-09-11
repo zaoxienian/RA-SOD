@@ -23,7 +23,7 @@ A qualitative video demo is available [here](assets/RASOD.mp4).
 - [VT821](https://drive.google.com/drive/folders/1gjTRVwvTNL0MJaJwS6vkpoi5rGyxIh41?usp=sharing)
 - [VT-IMAG](https://drive.google.com/file/d/1xzvqoYLrmJ-6x33DygCP-LhFNYfhQL-u/view?usp=sharing)
 
-Each dataset directory should contain aligned `RGB`, `T`, and `GT` folders. The model is trained on the VT5000 training set and tested on VT821, VT1000, VT5000, and VT-IMAG.
+The model is trained on the VT5000 training set and tested on VT821, VT1000, VT5000, and VT-IMAG.
 
 ## How to run
 
@@ -38,12 +38,7 @@ The ImageNet-pretrained Res2Net-50 backbone is downloaded automatically when fir
 ### Training
 
 ```bash
-python train.py \
-  --rgb_label_root ./datasets/VT5000/Train/RGB/ \
-  --thermal_label_root ./datasets/VT5000/Train/T/ \
-  --gt_label_root ./datasets/VT5000/Train/GT/ \
-  --gpu_id 0 \
-  --save_path ./Checkpoints/
+python train.py --rgb_label_root [path_of_training_rgb_images] --thermal_label_root [path_of_training_thermal_images] --gt_label_root [path_of_training_gt_images] --gpu_id 0 --save_path ./Checkpoints/
 ```
 
 Checkpoints are saved as `RASOD_epoch_*.pth` under `./Checkpoints/`.
@@ -53,10 +48,7 @@ Checkpoints are saved as `RASOD_epoch_*.pth` under `./Checkpoints/`.
 Download [`RASOD_best.pth`](https://pan.baidu.com/s/1pI3NyXngcYa-beolyq5fmw?pwd=sbjb) (extraction code: `sbjb`) and place it in `./Checkpoints/`.
 
 ```bash
-python test.py \
-  --test_path ./datasets \
-  --model_path ./Checkpoints/RASOD_best.pth \
-  --gpu_id 0
+python test.py --test_path [path_of_test_images] --model_path ./Checkpoints/RASOD_best.pth --gpu_id 0
 ```
 
 Prediction maps are saved to `./Predict_maps/<dataset>/`.
@@ -67,16 +59,7 @@ We use the [Saliency-Evaluation-Toolbox](https://github.com/jiwei0921/Saliency-E
 
 ## Citation
 
-Please cite our paper if you find this work useful:
-
-```bibtex
-@inproceedings{gao2026rasod,
-  title     = {RA-SOD: Reliability-Aware RGB-T Salient Object Detection under Modality Degradation},
-  author    = {Gao, Hongbo and Li, Zhengyu and Nie, Xueru and Zhu, Dihao and Zhao, Lijun and Wang, Yunke and Xu, Chang},
-  booktitle = {European Conference on Computer Vision},
-  year      = {2026}
-}
-```
+RA-SOD has been accepted by ECCV 2026. The paper link and official BibTeX will be added after publication.
 
 ## Acknowledgement
 
