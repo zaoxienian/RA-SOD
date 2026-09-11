@@ -12,6 +12,10 @@ RA-SOD estimates RGB and thermal modality reliability, uses uncertainty to guide
 
 The complete network diagram is available [here](figs/method.pdf).
 
+## Demo
+
+A qualitative video demo is available [here](assets/RASOD.mp4).
+
 ## Datasets
 
 - [VT5000](https://drive.google.com/drive/folders/1So0dHK5-aKj1t6OmFhRGLh_0nsXbldZE?usp=sharing)
