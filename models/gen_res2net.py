@@ -1,3 +1,8 @@
+# Derived from and modified from the Res2Net-PretrainedModels implementation:
+# https://github.com/Res2Net/Res2Net-PretrainedModels
+# Licensed under CC BY-NC-SA 4.0; see ../THIRD_PARTY_NOTICES.md.
+# SPDX-License-Identifier: CC-BY-NC-SA-4.0
+
 import torch
 import torch.nn as nn
 import math
