@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--testsize', type=int, default=352, help='testing size')
 parser.add_argument('--gpu_id',   type=str, default='6', help='select gpu id')
 parser.add_argument('--test_path',type=str, default='',help='test dataset path')
-parser.add_argument('--model_path', type=str, default='./Checkpoints/ConTriNet_epoch_best.pth', help='path to the model checkpoint')
+parser.add_argument('--model_path', type=str, default='./Checkpoints/RASOD_best.pth', help='path to the model checkpoint')
 opt = parser.parse_args()
 
 dataset_path = opt.test_path
@@ -33,7 +33,7 @@ test_datasets = ['VT821','VT1000', 'VT5000', 'VT-IMAG']
 
 with torch.no_grad():
     for dataset in test_datasets:
-        save_path = f'xxxxx/{dataset}/'
+        save_path = f'./Predict_maps/{dataset}/'
         os.makedirs(save_path, exist_ok=True)
    
         image_root = os.path.join(dataset_path, dataset, 'RGB')

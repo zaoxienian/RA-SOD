@@ -16,7 +16,7 @@ from data import get_loader
 
 # Argument parser
 parser = argparse.ArgumentParser()
-parser.add_argument('--epoch',       type=int,   default=150,   help='epoch number')
+parser.add_argument('--epoch',       type=int,   default=100,   help='epoch number')
 parser.add_argument('--lr',          type=float, default=5e-5,  help='learning rate')
 parser.add_argument('--batchsize',   type=int,   default=16,    help='training batch size')
 parser.add_argument('--trainsize',   type=int,   default=352,   help='training dataset size')
@@ -28,7 +28,7 @@ parser.add_argument('--rgb_label_root',      type=str, default='xxxxxx/VT5000/Tr
 parser.add_argument('--thermal_label_root',  type=str, default='xxxxxx/VT5000/Train/T/',         help='the training thermal images root')
 parser.add_argument('--gt_label_root',       type=str, default='xxxxxx/RGBT/VT5000/Train/GT/',        help='the training gt images root')
 
-parser.add_argument('--save_path',           type=str, default='xxxxx/Checkpoints/',    help='the path to save models and logs')
+parser.add_argument('--save_path',           type=str, default='./Checkpoints/',    help='the path to save models and logs')
 
 
 opt = parser.parse_args()
@@ -153,13 +153,13 @@ def train(train_loader, model, optimizer, scheduler, epoch, save_path):
         logging.info('#TRAIN#:Epoch [{:03d}/{:03d}], Loss_AVG: {:.4f}'.format( epoch, opt.epoch, loss_all))
         writer.add_scalar('Loss-epoch', loss_all, global_step=epoch)
         scheduler.step()
-        torch.save(model.state_dict(), save_path+'ConTriNet_epoch_{}.pth'.format(epoch))
+        torch.save(model.state_dict(), save_path+'RASOD_epoch_{}.pth'.format(epoch))
             
     except KeyboardInterrupt: 
         print('Keyboard Interrupt: save model and exit.')
         if not os.path.exists(save_path):
             os.makedirs(save_path)
-        torch.save(model.state_dict(), os.path.join(save_path, 'ConTriNet_epoch_{}.pth'.format(epoch + 1)))
+        torch.save(model.state_dict(), os.path.join(save_path, 'RASOD_epoch_{}.pth'.format(epoch + 1)))
         print('save checkpoints successfully!')
         raise
     finally:
